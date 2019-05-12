@@ -1,0 +1,8 @@
+<view class='info'>
+     <view class='left'>
+        <open-data type="userAvatarUrl"></open-data>
+     </view>
+     <view class='right'>
+        <open-data type='userNickName'></open-data>
+     </view>
+</view>

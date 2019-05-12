@@ -1,0 +1,35 @@
+<!-- 轮廓图开始 -->
+<swiper indicator-dots="true" indicator-color="white" indicator-active-color="white" autoplay="true" interval="3000" circular="true">
+<block wx:for="{{imgurls}}" wx:for-item="url">
+<swiper-item>
+    <image src="{{url}}" mode='aspectFill'></image>
+</swiper-item>
+</block>
+</swiper>
+<!-- 轮廓图结束 -->
+<!-- 搜索框开始 -->
+<view class='searcharea'>
+<view class='search-left'>
+       <input id='keyword' placeholder='歌曲名/歌手'></input>
+</view>
+<view class='search-right'>
+     <image id="searchbtn" src='../../images/search.png'></image>
+</view>
+</view>
+<!-- 搜索框结束 -->
+<!-- 音乐列表开始 -->
+<block wx:for="{{songs}}" wx:for-item="song">
+  <view class='contair'>
+     <view class='left'>
+            <image src='{{song.album.picUrl}}'></image>
+     </view>
+     <view class='middle'>
+         <view id='middle-top'>{{song.name}}</view>
+         <view id='middle-bottom'>{{song.artists}}</view>
+     </view>
+     <view class='right'>
+         <image src='../../images/more.png' bindtap='gotoPlay' data-id="{{song.id}}"></image>
+     </view>
+  </view>
+</block>
+<!-- 音乐列表结束 -->

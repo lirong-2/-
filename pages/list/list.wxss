@@ -1,0 +1,78 @@
+swiper{
+  width: 750rpx;
+  height: 300rpx;
+}
+swiper image{
+  width: 100%;
+  height: 100%;
+}
+.searcharea{
+   width: 750rpx;
+   height: 90rpx;
+   display: flex;
+}
+.search-left{
+   width: 600rpx;
+   height: 80rpx;
+   margin: 5rpx 25rpx;
+}
+.search-right{
+width: 100rpx;
+height:80rpx;
+margin: 5rpx 0rpx;
+}
+#keyword{
+  border: 1px solid #dd6980;
+  height: 80rpx;
+  margin: 0rpx 5rpx;
+   border-radius: 5rpx;
+   text-align: center;
+}
+#searchbtn{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 5rpx 0rpx;
+}
+.contair{
+  width: 750rpx;
+  height: 120rpx;
+  display: flex;
+  border-bottom: 1rpx solid #ddffdf;
+  border-radius: 5rpx;
+}
+.left{
+  width: 100rpx;
+  height: 100rpx;
+  margin:8rpx 30rpx;
+  border: 1px solid #bbb;
+}
+.left image{
+  width: 100rpx;
+  height: 100rpx;
+}
+.middle{
+          width: 400rpx;
+          height: 100rpx;
+          margin:8rpx 20rpx;
+}
+#middle-top{
+  height: 60rpx;
+  text-align: center;
+  color: #333;
+}
+#middle-bottom{
+  height: 40rpx;
+  font-size: 27rpx;
+  text-align: center;
+  color: #aaa;
+}
+.right{
+   width: 100rpx;
+   height: 100rpx;
+   margin: 25rpx 40rpx;
+}
+.right image{
+  width:60rpx;
+  height:60rpx;
+  margin-top:8rpx;
+}
