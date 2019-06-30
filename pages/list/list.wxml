@@ -10,22 +10,23 @@
 <!-- 搜索框开始 -->
 <view class='searcharea'>
 <view class='search-left'>
-       <input id='keyword' placeholder='歌曲名/歌手'></input>
+       <input id='keyword' placeholder='歌曲名/歌手' bindinput='recordpassword'></input>
 </view>
 <view class='search-right'>
-     <image id="searchbtn" src='../../images/search.png'></image>
+     <button id="searchbtn"  bindtap='dosearch' >搜索</button>
 </view>
 </view>
 <!-- 搜索框结束 -->
 <!-- 音乐列表开始 -->
-<block wx:for="{{songs}}" wx:for-item="song">
+<block wx:for="{{songs}}" wx:for-item="song" wx:for-index='i'>
   <view class='contair'>
      <view class='left'>
-            <image src='{{song.album.picUrl}}'></image>
+            <image src='{{albumPicUrls[i]}}'></image>
      </view>
      <view class='middle'>
-         <view id='middle-top'>{{song.name}}</view>
-         <view id='middle-bottom'>{{song.artists}}</view>
+         <view id='middle-top' style='overflow:hidden;height:50rpx; width:100%'>{{song.name}}</view>
+         <view id='middle-bottom'>{{song.artists[0].name}}-《{{song.album.name}}》</view>
+         
      </view>
      <view class='right'>
          <image src='../../images/more.png' bindtap='gotoPlay' data-id="{{song.id}}"></image>

@@ -1,3 +1,4 @@
+/* 轮廓图开始 */
 swiper{
   width: 750rpx;
   height: 300rpx;
@@ -6,33 +7,37 @@ swiper image{
   width: 100%;
   height: 100%;
 }
+/* 轮廓图结束 */
+/* 搜索框开始 */
 .searcharea{
    width: 750rpx;
-   height: 90rpx;
+   height: 70rpx;
    display: flex;
+   margin:10rpx 0rpx;
 }
 .search-left{
-   width: 600rpx;
-   height: 80rpx;
-   margin: 5rpx 25rpx;
-}
-.search-right{
-width: 100rpx;
-height:80rpx;
-margin: 5rpx 0rpx;
+   width: 500rpx;
+   height: 68rpx;
+   text-align: center;
+   border-radius: 30rpx;
+   border: 1rpx solid #dd6980;
+   margin-right: 50rpx;
 }
 #keyword{
-  border: 1px solid #dd6980;
-  height: 80rpx;
-  margin: 0rpx 5rpx;
-   border-radius: 5rpx;
-   text-align: center;
+  margin-top: 8rpx;
+}
+.search-right{
+  width: 180rpx;
+   height:70rpx;
 }
 #searchbtn{
-  width: 80rpx;
-  height: 80rpx;
-  margin: 5rpx 0rpx;
+  height: 70rpx;
+  text-align: center;
+  font-size: 32rpx;
+  background: #dd6980;
 }
+/* 搜索框结束 */
+/* 音乐列表开始 */
 .contair{
   width: 750rpx;
   height: 120rpx;
@@ -76,3 +81,4 @@ margin: 5rpx 0rpx;
   height:60rpx;
   margin-top:8rpx;
 }
+/* 音乐列表结束 */

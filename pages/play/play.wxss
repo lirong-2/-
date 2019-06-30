@@ -19,13 +19,13 @@
       font-size: 40rpx;
       font-family: Microsoft YaHei;
 }
-.cdimg{
+#cdimg{
   width: 250rpx;
   height: 250rpx;
   border-radius:50%;
   border: 100rpx solid rgba(0, 0, 0, 0.8);
   position: fixed;
-  top: 250rpx;
+  top: 130rpx;
   left: 150rpx;
 }
 .controlbag{
@@ -40,4 +40,35 @@
   height: 80rpx;
   margin-top: 10rpx;
   margin-left: 127rpx;
+}
+@keyframes xuanzhuan{
+  from{
+           transform: rotate(0deg);
+  }
+  to{
+         transform: rotate(360deg);
+  }
+}
+.xuanzhuan{
+  animation: xuanzhuan 6s linear infinite;
+}
+/* 歌词样式 */
+#content{
+  width: 750rpx;
+  height: 750rpx;
+  position: fixed;
+  top: 200rpx;
+  left: 0rpx;
+}
+#context text{
+  line-height:80rpx;
+  color: #aaa;
+  display: block;
+  font-size: 30rpx;
+  text-align: center; 
+}
+scroll-view{
+   width: 80%;
+   height: 100%;
+   margin:0 auto;
 }

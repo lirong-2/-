@@ -1,76 +1,68 @@
 Page({
   data:{
     imgurls:[
-      'http://p3.music.126.net/bKFfzVVNmdLTaRN5uHHPqA==/18786255672743757.jpg',
-      'http://p4.music.126.net/n15ddawhY4cyIzFu23CSJA==/1401877341861315.jpg',
-      'http://p3.music.126.net/zMwH3zh33TAacyh2_4RjXw==/1375489062675977.jpg'
+      '../../images/dl.jpg',
+      '../../images/lyf.jpg',
+      '../../images/yy.jpg',
+      '../../images/sy.jpg'
     ],
-    songs: [
-      {
-        id: "363488",
-        name: "爱不爱我",
-        album: {
-          picUrl: "http://p4.music.126.net/Frbn2mQ18NswoanBk-O1wg==/106652627910743.jpg",
-          name: "永恒的起点"
-        },
-        artists: "零点"
-      },
-      {
-        id: "186385",
-        name: "别怕我伤心",
-        album: {
-          picUrl: "http://p4.music.126.net/ns4zt4X5JPRf42h5q4F7wA==/841126395248902.jpg",
-          name: "张信哲精选"
-        },
-        artists: "张信哲"
-      },
-      {
-        id: "108251",
-        name: "当你",
-        album: {
-          picUrl: "http://p4.music.126.net/tUapZaR1iT5XTX2QcAc0DA==/96757023257715.jpg",
-          name: "她说 概念自选辑"
-        },
-        artists: "林俊杰"
-      },
-      {
-        id: "363488",
-        name: "爱不爱我",
-        album: {
-          picUrl: "http://p4.music.126.net/Frbn2mQ18NswoanBk-O1wg==/106652627910743.jpg",
-          name: "永恒的起点"
-        },
-        artists: "零点"
-      },
-      {
-        id: "186385",
-        name: "别怕我伤心",
-        album: {
-          picUrl: "http://p4.music.126.net/ns4zt4X5JPRf42h5q4F7wA==/841126395248902.jpg",
-          name: "张信哲精选"
-        },
-        artists: "张信哲"
-      },
-      {
-        id: "108251",
-        name: "当你",
-        album: {
-          picUrl: "http://p4.music.126.net/tUapZaR1iT5XTX2QcAc0DA==/96757023257715.jpg",
-          name: "她说 概念自选辑"
-        },
-        artists: "林俊杰"
-      },
-      {
-        id: "1293886117",
-       name: "李荣浩", "picUrl": null, "alias": []
-      }
-    ]
   },
   gotoPlay: function (e) {
     var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '../play/play?id=' + id
+    wx.navigateTo({//跳转到play界面
+      url: '../play/play?id='+ id+'&ids='+this.ids//在播放按钮时同时接收所有音乐id的数组
     });
 
+  },
+  onShareAppMessage:function(){//分享页面
+    return{
+      title:'猫宁云音乐',
+      url:'pages/list/list'
+    }
+  },
+  recordpassword:function(e){
+      this.kw=e.detail.value;//当在输入框输入就会调用此方法
+  },
+  dosearch:function(){
+        wx.request({
+          // 在播放按钮将所有音乐id数组传到页面
+          url: 'https://music.163.com/api/search/get?s='+this.kw+'&type=1&limit=10',
+          success:this.getSongs.bind(this)
+        })
+  },
+  getSongs:function(res){
+          var arr=res.data.result.songs;
+          this.setData({songs:arr})//将音乐信息设置到data中
+          this.ids= new Array();//改为this将所有音乐信息定义为全局
+          this.picUrls=new Array();
+          this.index=0;
+          for(var i=0;i<arr.length;i++){
+            const mid = arr[i].id;
+              this.ids[i]=mid;
+              wx.request({
+                url: 'https://music.163.com/api/song/detail?id=' + mid + '&ids=[' + mid +']',
+                success:this.getUrl.bind(this)
+              });
+          }
+  },
+  getUrl:function(res){
+    var song = res.data.songs[0];
+    var picUrl=song.album.picUrl;
+    this.picUrls[this.index]=picUrl;
+    this.index=this.index+1;
+    this.setData({albumPicUrls:this.picUrls});
+  },
+  onLoad:function(){
+    var kwArr=new Array();
+    kwArr[0]='张韶涵';
+    kwArr[1]='李荣浩';
+    kwArr[2]='张杰';
+    kwArr[3]='张靓颖';
+    kwArr[4]='张艺兴';
+    kwArr[5]='薛之谦';
+    var i=Math.random()*kwArr.length;
+    var j=Math.floor(i);
+    this.kw=kwArr[j];
+    this.dosearch();
   }
 })

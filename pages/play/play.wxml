@@ -2,10 +2,25 @@
    <view class='namestyle'>
         <text>{{song.name}}</text><!--获取歌的名称-->
   </view>
- <image class='cdimg' src='{{song.album.picUrl}}'style='transform:rotate({{jd}}deg)'></image><!--播放音乐的页面-->
+ <!--播放音乐的页面-->
+ <swiper id='content'>
+           <swiper-item>
+              <image id='cdimg' src='{{song.album.picUrl}}'class="{{state=='play'?'xuanzhuan':''}}"></image>
+           </swiper-item>
+           <!-- 歌词 -->
+           <swiper-item class='lrc'>
+               <scroll-view scroll-top="{{scrollTop}}" scroll-y='true' scroll-with-animation='true'>
+                      <view id='context'>
+                      <block wx:for="{{sws}}" wx:for-item="lrc" wx:for-index="i">
+                      <text style="color:{{i==lineNum?'red':'black'}}">{{lrc[1]}}</text>
+                      </block>
+                      </view>
+            </scroll-view>
+           </swiper-item>
+ </swiper>
 <!-- 设置播放控制条 -->
 <view class='controlbag'>
-   <image src="../../images/prev.png"></image>
+   <image src="../../images/prev.png" bindtap='playpast'></image>
    <image src="../../images/{{state=='play'?'pause':'play'}}.png" bindtap='playorpause'></image>
-   <image src="../../images/next.png"></image>
+   <image src="../../images/next.png" bindtap='playnext'></image>
 </view>

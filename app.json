@@ -8,7 +8,7 @@
     "navigationBarBackgroundColor": "#dd6980",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "猫宁听音乐",
-    "backgroundColor": "#ff0000",
+    "backgroundColor": "#dd6980",
     "backgroundTextStyle": "dark",
     "enablePullDownRefresh": false
   },
